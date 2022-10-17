@@ -92,8 +92,8 @@ public class Level {
 
 
 
-    public boolean addEnemy(String enemyName, double scoreToRemove, double scoreToGive, String enemyLocation, int enemiesType){
-        Enemy newEnemy= new Enemy(enemyName, scoreToRemove, scoreToGive, enemyLocation, enemiesType);
+    public boolean addEnemy(String enemyName, double scoreToRemove, double scoreToGive, String enemyLocation, int enemiesType, String nameEnemyType){
+        Enemy newEnemy= new Enemy(enemyName, scoreToRemove, scoreToGive, enemyLocation, enemiesType, nameEnemyType);
 
         for(int i=0;i<enemies.length;i++){
 

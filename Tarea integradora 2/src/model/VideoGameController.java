@@ -15,14 +15,14 @@ public class VideoGameController {
 
 	// R4
 	public boolean registerEnemy(int numberLevel, String enemyName, double scoreToRemove, double scoreToGive,
-			String enemyLocation, int enemiesType) {
+			String enemyLocation, int enemiesType, String nameEnemyType) {
 
 		for (int i = 0; i < enemies.length; i++) {
 			if (enemies[i] == null) {
 				if ((i + 1) == (numberLevel)) {
-					Enemy newEnemy = new Enemy(enemyName, scoreToRemove, scoreToGive, enemyLocation, enemiesType);
+					Enemy newEnemy = new Enemy(enemyName, scoreToRemove, scoreToGive, enemyLocation, enemiesType, nameEnemyType);
 					enemies[i] = newEnemy;
-					levels[i].addEnemy(enemyName, scoreToRemove, scoreToGive, enemyLocation, enemiesType);
+					levels[i].addEnemy(enemyName, scoreToRemove, scoreToGive, enemyLocation, enemiesType, nameEnemyType);
 					return true;
 				}
 			}
@@ -110,7 +110,7 @@ public class VideoGameController {
 		int positionMaxScore = 0;
 
 		for (int i = 0; i < enemies.length; i++) {
-			try {
+			if(enemies[i]!=null) {
 
 				scoree = enemies[i].getScoreToGive();
 
@@ -119,9 +119,7 @@ public class VideoGameController {
 					positionMaxScore = i;
 				}
 
-			} catch (NullPointerException a) {
-
-			}
+			} 
 		}
 		return positionMaxScore;
 	}
@@ -163,9 +161,7 @@ public class VideoGameController {
 
 	/**
 	 * editPlayerScore
-	 * 
-	 * @param nickName    represents the identifier of the player whose score is to
-	 *                    be changed
+	 * @param nickName represents the identifier of the player whose score is to be changed
 	 * @param playerScore represents the new score of the chosen player
 	 * @return true or false
 	 */
@@ -220,9 +216,76 @@ public class VideoGameController {
 			msg = "SMERALD";
 		}
 
-		System.out.println(diamonds);
-		System.out.println(rubys);
-		System.out.println(smeralds);
+		return msg;
+
+	}
+
+	public String quantityEnemyTypeInAllLevels(String nameEnemyType){
+
+		String msg = "";
+		int ogres = 0;
+		int abstracts = 0;
+		int bosses = 0;
+		int magics = 0;
+
+		for (int i = 0; i < enemies.length; i++) {
+			if(enemies[i] == null){
+				break;
+			}
+
+			if (enemies[i].getNameEnemyType().equals("OGRE")) {
+				ogres++;
+			} else if (enemies[i].getNameEnemyType().equals("ABSTRACT")) {
+				abstracts++;
+			} else if (enemies[i].getNameEnemyType().equals("BOSS")) {
+				bosses++;
+			}else if(enemies[i].getNameEnemyType().equals("MAGIC")){
+				magics++;
+			}
+		}
+
+		if (nameEnemyType=="OGRE") {
+			msg = "the number of ogres enemies in the game is: "+ogres;
+		} else if (nameEnemyType=="ABSTRACT") {
+			msg = "the number of abstract enemies in the game is: "+abstracts;
+		} else if (nameEnemyType=="BOSS") {
+			msg = "the number of boss enemies in the game is: "+bosses;
+		} else if(nameEnemyType=="MAGIC"){
+			msg= "the number of magic enemies in the game is: "+magics;
+		}
+
+		return msg;
+	}
+
+	public String quantityTreasureTypeInAllLevels(int typeTreasure) {
+
+		String msg = "";
+		int diamonds = 0;
+		int rubys = 0;
+		int smeralds = 0;
+
+		for (int i = 0; i < treasures.length; i++) {
+			if(treasures[i] == null){
+				break;
+			}
+
+			if (treasures[i].getNameTreasure().equals("DIAMOND")) {
+				diamonds++;
+			} else if (treasures[i].getNameTreasure().equals("RUBY")) {
+				rubys++;
+			} else if (treasures[i].getNameTreasure().equals("SMERALD")) {
+				smeralds++;
+			}
+		}
+
+		if (typeTreasure==1) {
+			msg = "the number of diamonds in the game is: "+diamonds;
+
+		} else if (typeTreasure==2) {
+			msg = "the number of rubies in the game is: "+rubys;
+		} else if (typeTreasure==3) {
+			msg= "the number of smeralds in the game is: "+smeralds;
+		}
 		return msg;
 
 	}

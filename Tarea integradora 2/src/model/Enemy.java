@@ -6,13 +6,15 @@ public class Enemy {
     private double scoreToGive;
     private String enemyLocation;
     private EnemyType enemiesType;
+    private String nameEnemyType;
 
-    public Enemy(String enemyName, double scoreToRemove, double scoreToGive, String enemyLocation, int enemiesType){
+    public Enemy(String enemyName, double scoreToRemove, double scoreToGive, String enemyLocation, int enemiesType, String nameEnemyType){
         this.enemyName=enemyName;
         this.scoreToRemove=scoreToRemove;
         this.scoreToGive=scoreToGive;
         this.enemyLocation=enemyLocation;
         this.enemiesType=EnemyType.values()[enemiesType];
+        this.nameEnemyType=nameEnemyType;
 
     }
 
@@ -53,6 +55,16 @@ public class Enemy {
 
     public void setEnemyLocation(String enemyLocation){
         this.enemyLocation=enemyLocation;
+
+    }
+
+    public String getNameEnemyType(){
+        return nameEnemyType;
+
+    }
+
+    public void setNameEnemyType(String nameEnemyType){
+        this.nameEnemyType=nameEnemyType;
 
     }
 

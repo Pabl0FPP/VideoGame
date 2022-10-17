@@ -14,6 +14,7 @@ public class Treasure {
         this.scoreToGive=scoreToGive;
         this.locationTreasures=locationTreasures;
         this.numberTreasures=numberTreasures;
+        this.typeTreasure=TreasureType.values()[typeTreasure];
     }
 
     public String getNameTreasure(){
