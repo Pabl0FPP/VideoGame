@@ -13,7 +13,17 @@ public class VideoGameController {
 		this.players = new Player[20];
 	}
 
-	// R4
+	/**
+	 * registerEnemy register an enemy to a level and to the arrangement of enemies
+	 * @param numberLevel refers to the level to which the enemy is to be added
+	 * @param enemyName refers to the name of the enemy
+	 * @param scoreToRemove refers to the score that the enemy removes if he defeats you
+	 * @param scoreToGive refers to the score that the enemy gives if you defeat him
+	 * @param enemyLocation refers to the location of the enemy
+	 * @param enemiesType refers to the type of Enemy
+	 * @param nameEnemyType It is a variable that is used to later compare the amount of an enemy type that is in the game
+	 * @returntrue true or false depending on whether it satisfies the condition
+	 */
 	public boolean registerEnemy(int numberLevel, String enemyName, double scoreToRemove, double scoreToGive,
 			String enemyLocation, int enemiesType, String nameEnemyType) {
 
@@ -30,7 +40,17 @@ public class VideoGameController {
 		return false;
 	}
 
-	// R3.
+	/**
+	 * registerTreasure register a treasure to a level and to the arrangement of treasures
+	 * @param numberLevel refers to the level to which the treasure is to be added
+	 * @param nameTreasure refers to the name of the treasure
+	 * @param urlImage refers to the treasure image url
+	 * @param scoreToGive refers to the score given by the treasure
+	 * @param locationTreasures refers to the location of the treasure
+	 * @param numberTreasures refers to the number of times you will add a treasure in a level
+	 * @param treasureType refers to the type of treasure
+	 * @return true or false depending on whether it satisfies the condition
+	 */
 	public boolean registerTreasure(int numberLevel, String nameTreasure, String urlImage, double scoreToGive,
 			String locationTreasures, int numberTreasures, int treasureType) {
 
@@ -49,7 +69,14 @@ public class VideoGameController {
 		return false;
 	}
 
-	// R1
+	/**
+	 * registerPlayer register a Player in the video game
+	 * @param nickname refers to the player id
+	 * @param name refers to the player's name
+	 * @param scorere refers to the player's score (initially it is 10)
+	 * @param lives refers to the lives the player has(initally are 5)
+	 * @return true or false depending on whether it satisfies the condition
+	 */
 	public boolean registerPlayer(String nickname, String name, double score, int lives) {
 		Player newPlayer = new Player(nickname, name, score, lives);
 		for (int i = 0; i < players.length; i++) {
@@ -61,7 +88,14 @@ public class VideoGameController {
 		return false;
 	}
 
-	// R2
+
+	/**
+	 * registerLevel register a level in the Video game
+	 * @param numberLevel refers to the level id
+	 * @param pointsNextLevel refers to the points needed to move to the next level
+	 * @param difficulty refers to the difficulty of the level
+	 * @return true or false depending on whether it satisfies the condition
+	 */
 	public boolean registerLevel(int numberLevel, double pointsNextLevel, String difficulty) {
 
 		Level newLevel = new Level(numberLevel, pointsNextLevel, difficulty);
@@ -76,6 +110,10 @@ public class VideoGameController {
 		return false;
 	}
 
+	/**
+	 * showLevelsList
+	 * @return msg shows the levels that are registered in the game
+	 */
 	public String showLevelsList() {
 		String msg = "";
 		for (int i = 0; i < levels.length; i++) {
@@ -86,6 +124,10 @@ public class VideoGameController {
 		return msg;
 	}
 
+	/**
+	 * showPlayersList
+	 * @return msg shows the players that are registered in the game
+	 */
 	public String showPlayersList() {
 		String msg = "";
 		for (int i = 0; i < players.length; i++) {
@@ -98,11 +140,8 @@ public class VideoGameController {
 	}
 
 	/**
-	 * positionEnemyMaxScoreToGive shown what is the position in the array, of the
-	 * enemy that max Score to Give have
-	 * 
-	 * @return positionMaxScore represents the position of the enemy with max score
-	 *         to Give
+	 * positionEnemyMaxScoreToGive shown what is the position in the array, of the enemy that max Score to Give have
+	 * @return positionMaxScore represents the position of the enemy with max score to Give
 	 */
 	public int positionEnemyMaxScoreToGive() {
 		double maxScore = 0;
@@ -126,9 +165,7 @@ public class VideoGameController {
 
 	/**
 	 * enemyMaxScoreToGive
-	 * 
-	 * @return msg represents what is the enemy with score to Give mas, shown his
-	 *         name and score to give
+	 * @return msg shows which is the enemy with score to give max, its name and score to give are shown
 	 */
 	public String enemyMaxScoreToGive() {
 		int positionMaxScore = positionEnemyMaxScoreToGive();
@@ -138,32 +175,21 @@ public class VideoGameController {
 	}
 
 	/**
-	 * treasuresAndEnemiesInALevel show the total of treasures
-	 * 
-	 * @param numberLevel
-	 * @return
+	 * treasuresAndEnemiesInALevel shows the enemies and treasures that are in a level entered by the user
+	 * @param numberLevel refers to the number of the level at which it is going to be consulted
+	 * @return msg shows the names of the treasures and enemies that are in the level
 	 */
 	public String treasuresAndEnemiesInALevel(int numberLevel) {
 		return levels[numberLevel].showTreasuresAndEnemiesInALevel();
 	}
 
-	public String showTreasures() {
-		String msg = "";
 
-		for (int i = 0; i < treasures.length; i++) {
-			if (treasures[i] != null) {
-				msg += "," + treasures[i].getNameTreasure();
-			}
-		}
-
-		return msg;
-	}
 
 	/**
 	 * editPlayerScore
 	 * @param nickName represents the identifier of the player whose score is to be changed
 	 * @param playerScore represents the new score of the chosen player
-	 * @return true or false
+	 * @return true or false depending on whether it satisfies the condition
 	 */
 	public boolean editPlayerScore(String nickName, double playerScore) {
 		String msg = "";
@@ -182,9 +208,7 @@ public class VideoGameController {
 
 	/**
 	 * treasureMostRepeated show the treasure that most repeated in all game
-	 * 
-	 * @return msg represents the message that shown what is the treaure most
-	 *         repeated in all game
+	 * @return msg represents the message that shown what is the treaure most repeated in all game
 	 */
 	public String treasureMostRepeated() {
 
@@ -219,6 +243,12 @@ public class VideoGameController {
 		return msg;
 
 	}
+
+	/**
+	 * quantityEnemyTypeInAllLevels shows the number of times there is an enemy type in the game
+	 * @param nameEnemyType refers to the type of enemy that is going to be searched for to count the times it is found
+	 * @return msg displays the number of times a user-entered enemy type appears, in the entire game
+	 */
 
 	public String quantityEnemyTypeInAllLevels(String nameEnemyType){
 
@@ -256,6 +286,12 @@ public class VideoGameController {
 
 		return msg;
 	}
+
+	/**
+	 * quantityTreasureTypeInAllLevels shows the number of times there is an enemy type in the game
+	 * @param typeTreasure refers to the type of treasure that is going to be searched for to count the times it is found
+	 * @return msg displays the number of times a user-entered treasure type appears, in the entire game
+	 */
 
 	public String quantityTreasureTypeInAllLevels(int typeTreasure) {
 

@@ -110,6 +110,9 @@ public class VideoGame {
         }
     }
 
+/**
+ * registerPlayer this method allows the user to enter all the data to create the player object
+ */
     private static void registerPlayer(){
         System.out.println("Type the new Player info: ");
         System.out.println("NickName: ");
@@ -127,6 +130,9 @@ public class VideoGame {
         }
     }
 
+/**
+ *registerTreasure this method allows the user to enter all the data to create the treasure object
+ */
     private static void registerTreasure(){
 
         String levelsList=controller.showLevelsList();
@@ -172,6 +178,9 @@ public class VideoGame {
 
     }
 
+    /**
+     * registerEnemy this method allows the user to enter all the data to create the enemy object
+     */
     private static void registerEnemy() {
 
         String levelsList= controller.showLevelsList();
@@ -221,6 +230,10 @@ public class VideoGame {
 
     }
 
+
+    /**
+     * editPlayerScore this method allows the user to enter some data to change the score of a player
+     */
     public static void editPlayerScore(){
 
         System.out.println("These are the registered players: "+controller.showPlayersList());
@@ -240,15 +253,21 @@ public class VideoGame {
 
         
     }
-
+    
+    /**
+     * showTreasuresAndEnemiesInALevel this method allows the user to enter the level at which they want to be shown the treasures and enemies that the level has
+     */
     public static void  showTreasuresAndEnemiesInALevel(){
-        System.out.println("Digite el numero del nivel al que le quiere ver los enemigos y tesoros");
+        System.out.println("type the number of the level you want to see the enemies and treasures");
 		int numberLevel=sc.nextInt()-1;
 
         System.out.println(controller.treasuresAndEnemiesInALevel(numberLevel));
 
     }
 
+    /**
+     * quantityEnemyTypeInAllLevels allows the user to enter an enemy type to know how many times it is in the level
+     */
     public static void quantityEnemyTypeInAllLevels(){
         System.out.println("enter the type of enemy you want to find the number of times there are in all levels\n1.OGRE\n2.ABSTRACT\n3.BOSS\n4.MAGIC");
         int typeEnemy=sc.nextInt();
@@ -266,6 +285,9 @@ public class VideoGame {
         }
         System.out.println(controller.quantityEnemyTypeInAllLevels(nameEnemyType));
     }
+    /**
+     * quantityTreasureTypeInAllLevels allows the user to enter an treasure type to know how many times it is in the level
+     */
 
     public static void quantityTreasureTypeInAllLevels(){
         System.out.println("enter the type of enemy you want to find the number of times there are in all levels\n1.DIAMOND\n2.RUBY\n3. SMERALD");
