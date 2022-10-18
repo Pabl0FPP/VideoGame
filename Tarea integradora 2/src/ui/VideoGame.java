@@ -100,6 +100,15 @@ public class VideoGame {
                     case 10:
                         System.out.println(controller.enemyMaxScoreToGive());
                         break;
+
+                    case 11:
+                        countConsonants();
+                        break;
+
+                    case 12:
+                    System.out.println(controller.top5Players());
+
+                        break;
             
                     default:
                     
@@ -296,6 +305,20 @@ public class VideoGame {
         System.out.println(controller.quantityTreasureTypeInAllLevels(typeTreasure));
 
     }
+
+
+    /**
+     * countconsonants this method allows the user to enter the name of an enemy, to count the consonants that his name has
+     */
+    public static void countConsonants(){
+        System.out.println("These are the registered players: "+controller.showEnemiesList());
+        System.out.println("type the name of the enemy you want to show you the number of consonants it has");
+        sc.nextLine();
+        String enemyName=sc.nextLine();
+
+        controller.countConsonants(enemyName);
+    }
+
 
 
 

@@ -140,6 +140,20 @@ public class VideoGameController {
 	}
 
 	/**
+	 * showEnemiesList
+	 * @return msg shows the players that are registered in the game
+	 */
+	public String showEnemiesList(){
+		String msg="";
+		for(int i=0;i<enemies.length;i++){
+			if (players[i]!=null){
+				msg=", "+enemies[i].getEnemyName();
+			}
+		}
+		return msg;
+	}
+
+	/**
 	 * positionEnemyMaxScoreToGive shown what is the position in the array, of the enemy that max Score to Give have
 	 * @return positionMaxScore represents the position of the enemy with max score to Give
 	 */
@@ -326,4 +340,60 @@ public class VideoGameController {
 
 	}
 
+	/**
+	 * countConsonants count the number of consonants in an enemy's name
+	 * @param enemyName represents the name of the enemy to which the consonants are going to be counted
+	 * @return displays the name of the enemy along with its number of consonants
+	 */
+	public String countConsonants(String enemyName){
+		int consonant=0;
+
+		for(int i=0;i<enemyName.length();i++){
+			if((enemyName.charAt(i)=='b')||(enemyName.charAt(i)=='d')||(enemyName.charAt(i)=='d')||(enemyName.charAt(i)=='f')||
+			(enemyName.charAt(i)=='g')||(enemyName.charAt(i)=='h')||(enemyName.charAt(i)=='k')||(enemyName.charAt(i)=='l')||
+			(enemyName.charAt(i)=='m')||(enemyName.charAt(i)=='n')||(enemyName.charAt(i)=='p')||(enemyName.charAt(i)=='q')||
+			(enemyName.charAt(i)=='r')||(enemyName.charAt(i)=='s')||(enemyName.charAt(i)=='t')||(enemyName.charAt(i)=='v')||
+			(enemyName.charAt(i)=='w')||(enemyName.charAt(i)=='x')||(enemyName.charAt(i)=='y')||(enemyName.charAt(i)=='z')){
+				consonant++;
+			
+
+			}
+
+
+		}
+		return "the number of consonants that "+enemyName+" has, is: "+consonant;
+
+	}
+	/**
+	 * top5Players this method organizes a list of the 5 players with the highest score and displays it
+	 * @return msg shows the top 5 players with the most points (their names and their score are shown)
+	 */
+
+	public String top5Players(){
+		Player player;
+		String msg="";
+		for(int i=0;i<5;i++){
+			if(players[i]!=null){
+				for(int j=0;j<players.length;i++){
+					if(players[j]!=null){
+						if(players[i].getScore()>players[j].getScore()){
+							player=players[i];
+							players[i]=players[j];
+							players[j]=player;
+
+							msg+="\n"+(i+1)+". "+player.getNickName()+" --- Score: "+player.getScore();
+
+						}
+					}
+
+				}
+			}
+			
+		}
+		return msg;
+	}
+
+
 }
+
+
